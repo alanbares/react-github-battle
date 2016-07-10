@@ -8,7 +8,7 @@ var PromptContainer = React.createClass({
 
   getInitialState: function() {
     return {
-      Username: ''
+      username: ''
     }
   },
 
