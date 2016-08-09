@@ -19,10 +19,22 @@ var styles = {
 }
 
 var Loading = React.createClass({
-  getInitialState: function() {
-    this.originalText = 'Loading';
+  propTypes: {
+    text: PropTypes.string,
+    speed: PropTypes.number
+  },
+
+  getDefaultProps: function() {
     return {
-      text: 'Loading'
+      text: 'Loading',
+      speed: 300
+    }
+  },
+
+  getInitialState: function() {
+    this.originalText = this.props.text;
+    return {
+      text: this.originalText
     }
   },
 
@@ -31,18 +43,18 @@ var Loading = React.createClass({
     this.interval = setInterval(function() {
       if (this.state.text === stopper) {
         this.setState({
-          text: 'Loading'
+          text: this.originalText
         })
       } else {
         this.setState({
           text: this.state.text + '.'
         })
       }
-    }.bind(this), 300)
+    }.bind(this), this.props.speed)
   },
 
-  componentWillMount: function() {
-    clearInterval(this.interval);
+  componentWillUnmount: function() {
+    window.clearInterval(this.interval);
   },
 
   render: function() {
