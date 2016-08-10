@@ -1,10 +1,13 @@
-var React = require('react');
-var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
-require('../main.css');
+import React, { Component } from 'react';
+import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
+
+// var React = require('react');
+// var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+// require('../main.css');
 
 
-var Main = React.createClass({
-  render: function() {
+export class Main extends Component {
+  render() {
     return (
       <div className="main-container">
         <ReactCSSTransitionGroup
@@ -16,6 +19,4 @@ var Main = React.createClass({
       </div>
     )
   }
-});
-
-module.exports = Main;
+}
